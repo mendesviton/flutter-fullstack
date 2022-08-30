@@ -2,8 +2,6 @@ import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:project/presenter/ui/login/login_page.dart';
-import 'package:project/presenter/ui/register/register_page.dart';
-import 'package:project/presenter/ui/register_sucessul/register_sucessul.dart';
 
 void main() {
   runApp(
@@ -27,7 +25,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const LoginPage(),
+      home: LoginPage(),
     );
   }
 }

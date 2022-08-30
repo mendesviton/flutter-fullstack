@@ -39,24 +39,24 @@ class RegisterSucessul extends StatelessWidget {
                 size: 200,
               ),
               Column(
-                children: [
-                  const Text(
+                children: const [
+                   Text(
                     "Your registration was successful ",
                     style: TextStyle(color: Colors.grey, fontSize: 18),
                   ),
-                  const Text(
+                   Text(
                     "and we have sent you",
                     style: TextStyle(color: Colors.grey, fontSize: 17),
                   ),
-                  const Text(
+                   Text(
                     "a confirmation receipt to your",
                     style: TextStyle(color: Colors.grey, fontSize: 17),
                   ),
-                  const Text(
+                   Text(
                     "email at: ",
                     style: TextStyle(color: Colors.grey, fontSize: 17),
                   ),
-                  const Padding(
+                   Padding(
                     padding: EdgeInsets.only(top: 10),
                     child: Text(
                       "< user email > ",
@@ -74,7 +74,7 @@ class RegisterSucessul extends StatelessWidget {
                 child: ElevatedButton(
                     onPressed: () {
                       Navigator.of(context).pushReplacement(
-                          SlideTransitionAnimation(page: const LoginPage()));
+                          SlideTransitionAnimation(page: LoginPage()));
                     },
                     style: ButtonStyle(
                         backgroundColor:

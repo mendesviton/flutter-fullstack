@@ -4,12 +4,18 @@ import 'package:flutter/material.dart';
 import 'package:project/core/assets/assets.dart';
 import 'package:project/presenter/ui/register/register_page.dart';
 import 'package:project/widgets/shared/slide_animation.dart';
+import 'package:project/widgets/shared/text_edit_pattern.dart';
 
 import 'widget/social_media_icon.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+  LoginPage({
+    super.key,
+  });
   final Color pageColor = const Color.fromARGB(255, 75, 14, 136);
+
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -49,42 +55,21 @@ class LoginPage extends StatelessWidget {
                     Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const TextField(
-                          decoration: InputDecoration(
-                            contentPadding: EdgeInsets.symmetric(vertical: 25),
-                            prefixIcon: Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 15),
-                              child: Icon(Icons.mail, color: Colors.grey),
-                            ),
-                            border: OutlineInputBorder(),
-                            hintText: 'Email',
-                            filled: true,
-                            fillColor: Color.fromARGB(255, 255, 255, 255),
-                          ),
-                        ),
+                        TextFieldPattern(
+                            controller: emailController,
+                            hint: "Password",
+                            icon: Icons.email),
                         SizedBox(
                           height: size.height * .03,
                         ),
-                        const TextField(
-                          obscureText: true,
-                          decoration: InputDecoration(
-                            contentPadding: EdgeInsets.symmetric(vertical: 25),
-                            prefixIcon: Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 15),
-                              child: Icon(Icons.password, color: Colors.grey),
-                            ),
-                            border: OutlineInputBorder(),
-                            hintText: 'Password',
-                            filled: true,
-                            fillColor: Color.fromARGB(255, 255, 255, 255),
-                          ),
-                        ),
+                        TextFieldPattern(
+                            controller: passwordController,
+                            hint: "Password",
+                            icon: Icons.lock)
                       ],
                     ),
                     GestureDetector(
-                      onTap: () {
-                        print('esqueci o password porra');
-                      },
+                      onTap: () {},
                       child: const Text(
                         "forgot your password? ",
                         style: TextStyle(color: Colors.grey, fontSize: 20),
@@ -126,9 +111,8 @@ class LoginPage extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
-                  print('fodase?');
                   Navigator.of(context).pushReplacement(
-                      SlideTransitionAnimation(page: const RegisterPage()));
+                      SlideTransitionAnimation(page: RegisterPage()));
                 },
                 child: const Text(
                   "SIGN UP",

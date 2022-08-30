@@ -3,12 +3,17 @@ import 'package:project/core/assets/assets.dart';
 import 'package:project/presenter/ui/login/login_page.dart';
 import 'package:project/presenter/ui/register_sucessul/register_sucessul.dart';
 import 'package:project/widgets/shared/slide_animation.dart';
+import 'package:project/widgets/shared/text_edit_pattern.dart';
 
 import '../login/widget/social_media_icon.dart';
 
 class RegisterPage extends StatelessWidget {
-  const RegisterPage({Key? key}) : super(key: key);
+  RegisterPage({Key? key}) : super(key: key);
 
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController passwordConfirmController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
   final Color pageColor = const Color.fromARGB(255, 75, 14, 136);
   @override
   Widget build(BuildContext context) {
@@ -41,60 +46,22 @@ class RegisterPage extends StatelessWidget {
                   "or use your email for registration ",
                   style: TextStyle(color: Colors.grey, fontSize: 18),
                 ),
-                const TextField(
-                  decoration: InputDecoration(
-                    contentPadding: EdgeInsets.symmetric(vertical: 25),
-                    prefixIcon: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 15),
-                      child:
-                          Icon(Icons.person_outline_sharp, color: Colors.grey),
-                    ),
-                    border: OutlineInputBorder(),
-                    hintText: 'Name',
-                    filled: true,
-                    fillColor: Color.fromARGB(255, 255, 255, 255),
-                  ),
-                ),
-                const TextField(
-                  decoration: InputDecoration(
-                    contentPadding: EdgeInsets.symmetric(vertical: 25),
-                    prefixIcon: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 15),
-                      child: Icon(Icons.email, color: Colors.grey),
-                    ),
-                    border: OutlineInputBorder(),
-                    hintText: 'Email',
-                    filled: true,
-                    fillColor: Color.fromARGB(255, 255, 255, 255),
-                  ),
-                ),
-                const TextField(
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    contentPadding: EdgeInsets.symmetric(vertical: 25),
-                    prefixIcon: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 15),
-                      child: Icon(Icons.lock, color: Colors.grey),
-                    ),
-                    border: OutlineInputBorder(),
-                    hintText: 'Password',
-                    filled: true,
-                    fillColor: Color.fromARGB(255, 255, 255, 255),
-                  ),
-                ),
-                const TextField(
-                  decoration: InputDecoration(
-                    contentPadding: EdgeInsets.symmetric(vertical: 25),
-                    prefixIcon: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 15),
-                      child: Icon(Icons.lock, color: Colors.grey),
-                    ),
-                    border: OutlineInputBorder(),
-                    hintText: 'Confirm Password',
-                    filled: true,
-                    fillColor: Color.fromARGB(255, 255, 255, 255),
-                  ),
-                ),
+                TextFieldPattern(
+                    controller: nameController,
+                    hint: 'Name',
+                    icon: Icons.person_outline_sharp),
+                TextFieldPattern(
+                    controller: emailController,
+                    hint: 'Email',
+                    icon: Icons.email),
+                TextFieldPattern(
+                    controller: passwordController,
+                    hint: 'Password',
+                    icon: Icons.lock),
+                TextFieldPattern(
+                    controller: passwordConfirmController,
+                    hint: 'Confirm Password',
+                    icon: Icons.lock),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -135,7 +102,7 @@ class RegisterPage extends StatelessWidget {
                   onTap: () {
                     print('fodase?');
                     Navigator.of(context).pushReplacement(
-                        SlideTransitionAnimation(page: const LoginPage()));
+                        SlideTransitionAnimation(page: LoginPage()));
                   },
                   child: const Text(
                     "SIGN IN  ",
