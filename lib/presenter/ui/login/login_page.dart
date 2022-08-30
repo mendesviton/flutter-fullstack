@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 import 'package:project/core/assets/assets.dart';
@@ -56,13 +57,15 @@ class LoginPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         TextFieldPattern(
+                            obscure: false,
                             controller: emailController,
-                            hint: "Password",
+                            hint: "Email",
                             icon: Icons.email),
                         SizedBox(
                           height: size.height * .03,
                         ),
                         TextFieldPattern(
+                            obscure: true,
                             controller: passwordController,
                             hint: "Password",
                             icon: Icons.lock)
@@ -82,7 +85,12 @@ class LoginPage extends StatelessWidget {
                 height: size.height * 0.05,
                 width: size.width * 0.8,
                 child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      Dio dio = Dio();
+                      final response =
+                          await dio.get('http://192.168.0.104/api/usuario');
+                      print(response);
+                    },
                     style: ButtonStyle(
                         backgroundColor:
                             MaterialStateProperty.all(Colors.white),

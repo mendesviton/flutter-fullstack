@@ -47,18 +47,22 @@ class RegisterPage extends StatelessWidget {
                   style: TextStyle(color: Colors.grey, fontSize: 18),
                 ),
                 TextFieldPattern(
+                    obscure: false,
                     controller: nameController,
                     hint: 'Name',
                     icon: Icons.person_outline_sharp),
                 TextFieldPattern(
+                    obscure: false,
                     controller: emailController,
                     hint: 'Email',
                     icon: Icons.email),
                 TextFieldPattern(
+                    obscure: true,
                     controller: passwordController,
                     hint: 'Password',
                     icon: Icons.lock),
                 TextFieldPattern(
+                    obscure: true,
                     controller: passwordConfirmController,
                     hint: 'Confirm Password',
                     icon: Icons.lock),
@@ -100,7 +104,6 @@ class RegisterPage extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    print('fodase?');
                     Navigator.of(context).pushReplacement(
                         SlideTransitionAnimation(page: LoginPage()));
                   },

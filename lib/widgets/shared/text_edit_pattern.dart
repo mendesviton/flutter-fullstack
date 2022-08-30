@@ -6,13 +6,16 @@ class TextFieldPattern extends StatelessWidget {
     required this.controller,
     required this.hint,
     required this.icon,
+    required this.obscure,
   }) : super(key: key);
   final TextEditingController controller;
   final String hint;
   final IconData icon;
+  final bool obscure;
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      obscureText: obscure,
       controller: controller,
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.symmetric(vertical: 25),

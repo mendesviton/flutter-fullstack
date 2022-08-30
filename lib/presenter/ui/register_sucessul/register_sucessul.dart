@@ -33,30 +33,30 @@ class RegisterSucessul extends StatelessWidget {
                   ),
                 ],
               ),
-              const Icon(
+              Icon(
                 color: Colors.purple,
                 Icons.check,
                 size: 200,
               ),
               Column(
                 children: const [
-                   Text(
+                  Text(
                     "Your registration was successful ",
                     style: TextStyle(color: Colors.grey, fontSize: 18),
                   ),
-                   Text(
+                  Text(
                     "and we have sent you",
                     style: TextStyle(color: Colors.grey, fontSize: 17),
                   ),
-                   Text(
+                  Text(
                     "a confirmation receipt to your",
                     style: TextStyle(color: Colors.grey, fontSize: 17),
                   ),
-                   Text(
+                  Text(
                     "email at: ",
                     style: TextStyle(color: Colors.grey, fontSize: 17),
                   ),
-                   Padding(
+                  Padding(
                     padding: EdgeInsets.only(top: 10),
                     child: Text(
                       "< user email > ",

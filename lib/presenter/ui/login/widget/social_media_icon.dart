@@ -11,7 +11,7 @@ class SocialMediaIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return CircleAvatar(
-      radius: size.height * .025,
+      radius: size.height * .040,
       backgroundColor: const Color.fromARGB(255, 75, 14, 136),
       child: Image.asset(image),
     );
