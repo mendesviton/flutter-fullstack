@@ -12,7 +12,7 @@ class GetUserByEmailPasswordLocalDatasource
 
   @override
   Future<UserEntity?> call(String email, String password) async {
-    final response = await dio.get('http://192.168.0.104/api/usuario');
+    final response = await dio.get('http://192.168.1.18:80/api/User');
 
     List<UserEntity> users = [];
 

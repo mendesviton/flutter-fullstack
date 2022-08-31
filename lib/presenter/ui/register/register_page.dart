@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project/core/assets/assets.dart';
+import 'package:project/presenter/controller/user_model.dart';
+import 'package:project/presenter/controller/user_repository.dart';
 import 'package:project/presenter/ui/login/login_page.dart';
 import 'package:project/presenter/ui/register_sucessul/register_sucessul.dart';
 import 'package:project/widgets/shared/slide_animation.dart';
@@ -14,6 +16,9 @@ class RegisterPage extends StatelessWidget {
   TextEditingController passwordController = TextEditingController();
   TextEditingController passwordConfirmController = TextEditingController();
   TextEditingController nameController = TextEditingController();
+
+  UserRepository userRepo = UserRepository();
+  late UserModel user;
   final Color pageColor = const Color.fromARGB(255, 75, 14, 136);
   @override
   Widget build(BuildContext context) {
@@ -74,10 +79,14 @@ class RegisterPage extends StatelessWidget {
                       height: size.height * 0.05,
                       width: size.width * 0.8,
                       child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.of(context).pushReplacement(
-                                SlideTransitionAnimation(
-                                    page: const RegisterSucessul()));
+                          onPressed: () async {
+                            user = UserModel(0, nameController.text,
+                                passwordController.text, emailController.text);
+
+                            print(await userRepo.addUser(user));
+                            // Navigator.of(context).pushReplacement(
+                            //     SlideTransitionAnimation(
+                            //         page: const RegisterSucessul()));
                           },
                           style: ButtonStyle(
                               backgroundColor:

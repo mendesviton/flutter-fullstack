@@ -59,11 +59,13 @@ class RegisterSucessul extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(top: 10),
                     child: Text(
+
                       "< user email > ",
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Color.fromARGB(255, 153, 153, 153),
                           fontSize: 17),
+                          
                     ),
                   ),
                 ],

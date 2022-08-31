@@ -1,8 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 import 'package:project/core/assets/assets.dart';
+import 'package:project/presenter/controller/user_controller.dart';
+import 'package:project/presenter/controller/user_model.dart';
 import 'package:project/presenter/ui/register/register_page.dart';
 import 'package:project/widgets/shared/slide_animation.dart';
 import 'package:project/widgets/shared/text_edit_pattern.dart';
@@ -15,6 +16,7 @@ class LoginPage extends StatelessWidget {
   });
   final Color pageColor = const Color.fromARGB(255, 75, 14, 136);
 
+  final UserController userControler = UserController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   @override
@@ -86,10 +88,13 @@ class LoginPage extends StatelessWidget {
                 width: size.width * 0.8,
                 child: ElevatedButton(
                     onPressed: () async {
-                      Dio dio = Dio();
-                      final response =
-                          await dio.get('http://192.168.0.104/api/usuario');
-                      print(response);
+                      UserModel? user = await userControler.LoginValidation(
+                          emailController.text, passwordController.text);
+                      if (user != null) {
+                        print("cabloco " + user.name + " logou");
+                      } else {
+                        print("escreveu algo jaguara");
+                      }
                     },
                     style: ButtonStyle(
                         backgroundColor:
